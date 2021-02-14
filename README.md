@@ -22,8 +22,9 @@ wordpress:
 
 ### wp-contentフォルダだけをマウントする場合
 ```
-volumes:
-  - ./wp-content:/var/www/html/wp-content
+wordpress:
+  volumes:
+     - ./wp-content:/var/www/html/wp-content
 ```
 
 ### コンテナ名を付ける場合
