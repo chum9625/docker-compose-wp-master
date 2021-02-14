@@ -1,8 +1,10 @@
 ## 公式サイト
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
 
-### WordPress環境をホスト側にマウントして使いやすくする
-- downコマンドで停止しても、–-volumesオプションを付けてもデータは残る。
+## docker-compose.ymlの設定
+
+- WordPress環境をホスト側にマウントして使いやすくする
+-- downコマンドで停止しても、–-volumesオプションを付けてもデータは残る。
 
 ### htmlフォルダにWordPressファイル群全てをマウントする場合
 
