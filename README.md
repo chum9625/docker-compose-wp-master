@@ -5,12 +5,12 @@
 
 - htmlフォルダにWordPressファイル群全てをマウントする場合
 
-1. 作業フォルダ内にWordPressファイル群がマウントされるサブフォルダ(html)を作成。
-```
-wp-sample-project
-├── docker-compose.yml
-└── html/
-```
+  1. 作業フォルダ内にWordPressファイル群がマウントされるサブフォルダ(html)を作成。
+  ```
+  wp-sample-project
+  ├── docker-compose.yml
+  └── html/
+  ```
 
 2. docker-compose.ymlのwordpressサービス配下に定義。
 ```
