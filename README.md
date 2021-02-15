@@ -1,12 +1,9 @@
 ## 公式サイト
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
 
-## docker-compose.ymlの設定
+## docker-compose.ymlの設定例
 
-- WordPress環境をホスト側にマウントして使いやすくする
-（downコマンドで停止しても、–-volumesオプションを付けてもデータを残るようにする）
-
-### htmlフォルダにWordPressファイル群全てをマウントする場合
+- htmlフォルダにWordPressファイル群全てをマウントする場合
 
 1. 作業フォルダ内にWordPressファイル群がマウントされるサブフォルダ(html)を作成。
 ```
@@ -22,21 +19,20 @@ wordpress:
     - ./html:/var/www/html
 ```
 
-### wp-contentフォルダだけをマウントする場合
+- wp-contentフォルダだけをマウントする場合
 ```
 wordpress:
   volumes:
      - ./wp-content:/var/www/html/wp-content
 ```
 
-### コンテナ名を付ける場合
+- コンテナ名を付ける場合
 ```
 wordpress:
   container_name: my-wp-container
 ```
 
-### サイトアクセスにサブフォルダを付ける場合
-- 例）　localhost:8000/wp
+- サイトアクセスにサブフォルダを付ける場合... 例）　localhost:8000/wp
 
 ```
 wordpress:
