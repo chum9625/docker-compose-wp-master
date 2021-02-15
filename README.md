@@ -3,36 +3,37 @@
 
 ## docker-compose.ymlの設定例
 
-- htmlフォルダにWordPressファイル群全てをマウントする場合
+### htmlフォルダにWordPressファイル群全てをマウントする場合
 
-  1. 作業フォルダ内にWordPressファイル群がマウントされるサブフォルダ(html)を作成。
+- 作業フォルダ内にWordPressファイル群がマウントされるサブフォルダ(html)を作成。
   ```
   wp-sample-project
   ├── docker-compose.yml
   └── html/
   ```
 
-2. docker-compose.ymlのwordpressサービス配下に定義。
+- docker-compose.ymlのwordpressサービス配下に定義。
 ```
 wordpress:
   volumes:
     - ./html:/var/www/html
 ```
 
-- wp-contentフォルダだけをマウントする場合
+### wp-contentフォルダだけをマウントする場合
 ```
 wordpress:
   volumes:
      - ./wp-content:/var/www/html/wp-content
 ```
 
-- コンテナ名を付ける場合
+### コンテナ名を付ける場合
 ```
 wordpress:
   container_name: my-wp-container
 ```
 
-- サイトアクセスにサブフォルダを付ける場合... 例）　localhost:8000/wp
+### サイトアクセスにサブフォルダを付ける場合
+- 例）　localhost:8000/wp
 
 ```
 wordpress:
