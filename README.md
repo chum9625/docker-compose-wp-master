@@ -1,6 +1,4 @@
-# Docker Composeを使ったWordPress動作環境
-
-## 公式サイト
+## Docker Compose + WordPress
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
 
 ## docker-compose.ymlの設定例
@@ -47,5 +45,5 @@
 ## コマンド
 - docker-complse.ymlと同階層で実行する。
   - 起動　```docker-compose up -d```
-  - 停止＆削除　```docker-compose down```
-  - 停止＆削除＆DB削除　```docker-compose down --volumes```
+  - コンテナとデフォルトネットワーク削除　```docker-compose down```
+  - コンテナとデフォルトネットワークかつDB削除　```docker-compose down --volumes```
