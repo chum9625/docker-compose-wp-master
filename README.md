@@ -1,7 +1,7 @@
 ## Docker Compose + WordPress
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
 
-## projectのディレクトリ構成
+## ディレクトリ構成
 
 ```
   my-wp-project
@@ -23,15 +23,15 @@
     container_name: my-wp-container
   ```
 
-- volumesでデータ保持指定。
+- volumesでデータ保持
   ```
   wordpress:
     volumes:
       - ./html:/var/www/html
       - ./wp-content:/var/www/html/wp-content
   ```
-- サイトアクセスにサブフォルダを付ける
--- 例）　localhost:8000/wp
+
+- サイトアクセスにサブフォルダを付ける　例）localhost:8000/wp
 
   ```
   wordpress:
@@ -40,11 +40,11 @@
     working_dir: /var/www/html/wp
   ```
 
-## コマンド : docker-complse.ymlと同階層で実行
+## コマンド（docker-complse.ymlと同階層で実行）
 
 - 起動　```docker-compose up -d```
 - コンテナとデフォルトネットワーク削除　```docker-compose down```
-- コンテナとデフォルトネットワークかつDB削除　```docker-compose down --volumes```
+- コンテナとデフォルトネットワークかつデータ削除　```docker-compose down --volumes```
 
 ## 【phpMyAdmin】SQLファイルのインポートエラー「Incorrect format parameter」の対処法
 
@@ -52,5 +52,5 @@
 - インポートするsqlファイルのサイズ上限超過。（デフォルトは2048KB）
 
 ### 対処
-- カスタム設定した phpmyadmin-misc.ini ファイルを作成し、volumeにマウントする。
-- コンテナを再起動すれば設定が反映される。
+- カスタム設定した phpmyadmin-misc.ini ファイルを作成し、volumesでマウント。
+- コンテナ再起動で設定反映。
