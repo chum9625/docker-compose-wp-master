@@ -9,10 +9,18 @@
   ├── phpmyadmin/
   ├── wp-content/
   ├── docker-compose.yml
-  └── phpmyadmin-misc.ini
+  └── phpmyadmin-misc.ini  # 復元時に必要
   ```
 - htmlディレクトリ以下にWordPressファイル群がマウント
 - wp-contentディレクトリはテーマ開発のためマウント
+
+## 復元時に必要
+
+```
+    volumes:
+      - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+```
+
 - phpmyadminディレクトリに、作成したphpmyadmin-misc.ini ファイルをマウント
 
 ## docker-compose.ymlの補足
@@ -46,7 +54,9 @@
 - コンテナとデフォルトネットワーク削除　```docker-compose down```
 - コンテナとデフォルトネットワークかつデータ削除　```docker-compose down --volumes```
 
-## 【phpMyAdmin】SQLファイルのインポートエラー「Incorrect format parameter」の対処法
+## 復元時について
+
+- 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」が出た場合
 
 ### 原因
 - インポートするsqlファイルのサイズ上限超過。（デフォルトは2048KB）
