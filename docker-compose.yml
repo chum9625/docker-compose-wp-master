@@ -1,33 +1,46 @@
-version: '3.3'
+version: '3.9'
 
 services:
-    db:
-      image: mysql:5.7
-      volumes:
-        - db_data:/var/lib/mysql
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: root-pass
-        MYSQL_DATABASE: wordpress
-        MYSQL_USER:
-        MYSQL_PASSWORD:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root-pass
+      MYSQL_DATABASE: wordpress
+      #  MYSQL_USER: db-user
+      #  MYSQL_PASSWORD: db-pass
+      
+  wordpress:
+    container_name: my-wp-container
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - ./html:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root-pass
+      WORDPRESS_DB_NAME: chum_taise3v2
 
-    wordpress:
-      container_name: my-project-name
-      depends_on:
-        - db
-      image: wordpress:latest
-      ports:
-        - "8000:80"
-      restart: always
-      environment:
-        WORDPRESS_DB_HOST: db:3306
-        WORDPRESS_DB_USER: root
-        WORDPRESS_DB_PASSWORD: root-pass
-        WORDPRESS_DB_NAME: wordpress
-      volumes:
-        - ./html:/var/www/html
-        - ./wp-content:/var/www/html/wp-content
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+        # インポートファイルサイズの上限を変更する
 
 volumes:
     db_data: {}
