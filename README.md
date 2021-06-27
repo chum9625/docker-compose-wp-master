@@ -7,7 +7,7 @@
   my-wp-project
   ├── html/
   ├── phpmyadmin/
-  ├── wp-content
+  ├── wp-content/
   ├── docker-compose.yml
   └── phpmyadmin-misc.ini
   ```
@@ -49,7 +49,7 @@
 ## 【phpMyAdmin】SQLファイルのインポートエラー「Incorrect format parameter」の対処法
 
 ### 原因
-- インポートしようとしているsqlファイルサイズが上限超過。（デフォルトは2048KB）
+- インポートするsqlファイルのサイズ上限超過。（デフォルトは2048KB）
 
 ### 対処
 - カスタム設定した phpmyadmin-misc.ini ファイルを作成し、volumeにマウントする。
