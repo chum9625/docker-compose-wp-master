@@ -1,5 +1,7 @@
-## Docker Compose + WordPress
+## Reference source
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
+- [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
+- [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
 
 ## ディレクトリ構成
 
@@ -54,9 +56,9 @@
 - コンテナとデフォルトネットワーク削除　```docker-compose down```
 - コンテナとデフォルトネットワークかつデータ削除　```docker-compose down --volumes```
 
-## 復元時について
+## 復元時に遭遇するエラー
 
-- 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」が出た場合
+- 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」
 
 ### 原因
 - インポートするsqlファイルのサイズ上限超過。（デフォルトは2048KB）
@@ -64,3 +66,8 @@
 ### 対処
 - カスタム設定した phpmyadmin-misc.ini ファイルを作成し、volumesでマウント。
 - コンテナ再起動で設定反映。
+
+## 復元時に使用するdomain置換ツール
+
+### [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
+- GitHubからcodeを落とせばユーザー情報提供不要
