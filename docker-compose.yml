@@ -9,8 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root-pass
       MYSQL_DATABASE: wordpress
-      #  MYSQL_USER: db-user
-      #  MYSQL_PASSWORD: db-pass
+      MYSQL_USER: db-user
+      MYSQL_PASSWORD: db-pass
       
   wordpress:
     container_name: my-wp-container
@@ -27,7 +27,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: root-pass
-      WORDPRESS_DB_NAME: chum_taise3v2
+      WORDPRESS_DB_NAME: wordpress
 
   phpmyadmin:
     depends_on:
@@ -38,9 +38,9 @@ services:
     restart: always
     ports:
       - "8080:80"
-    volumes:
-      - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
-        # インポートファイルサイズの上限を変更する
+  # sqlファイルインポート時はファイルサイズの上限を変更するため以下を追記する
+  # volumes:
+  #    - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 
 volumes:
     db_data: {}
