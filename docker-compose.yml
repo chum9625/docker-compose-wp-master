@@ -38,7 +38,7 @@ services:
     restart: always
     ports:
       - "8080:80"
-  # sqlファイルインポート時はファイルサイズの上限を変更するため以下を追記する
+  # sqlファイルインポート時はファイルサイズの上限を変更するためコメントアウトを外す
   # volumes:
   #    - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 
