@@ -8,7 +8,7 @@
 ```
   my-wp-project
   ├── html/
-  ├── phpmyadmin/
+  ├── phpmyadmin/ # データベース操作時便利
   ├── wp-content/
   ├── docker-compose.yml
   └── phpmyadmin-misc.ini  # 復元時に必要
