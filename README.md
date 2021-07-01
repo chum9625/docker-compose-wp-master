@@ -8,15 +8,15 @@
 ```
   my-wp-project
   ├── html/
-  ├── phpmyadmin/ # データベース操作時便利
+  ├── phpmyadmin/ # volumesでマウント時に生成
   ├── wp-content/
   ├── docker-compose.yml
   └── phpmyadmin-misc.ini  # 復元時に必要
   ```
 - htmlディレクトリ以下にWordPressファイル群がマウント
-- wp-contentディレクトリはテーマ開発のためマウント
+- wp-contentディレクトリはテーマ開発用にマウント
 
-## 復元時に必要
+## 復元操作でsqlファイルインポート時はコメントアウトを外す
 
 ```
     volumes:
