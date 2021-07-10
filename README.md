@@ -61,9 +61,11 @@
 - 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」
 
 ### 原因
+
 - インポートするsqlファイルのサイズ上限超過。（デフォルトは2048KB）
 
 ### 対処
+
 - カスタム設定した phpmyadmin-misc.ini ファイルを作成し、volumesでマウント。
 - コンテナ再起動で設定反映。
 
@@ -71,3 +73,15 @@
 
 ### [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
 - GitHubからcodeを落とせばユーザー情報提供不要
+
+## volumeマウント時のファイルowner問題
+
+### 背景
+
+- ファイルを作成するとパーミッションエラーが起き編集できない。
+- Linux(ubuntsu)環境で起きるエラー。
+- Windowsでは問題なく編集可能。
+
+### 解決策
+
+検証中
