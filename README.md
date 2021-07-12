@@ -104,7 +104,7 @@ Windows側で開発する。
 
 ```
 $ whoami
-nori
+hoge
 $ id hoge
 uid=500（hoge） gid=501（hoge） 所属グループ=501（hoge）
 ```
