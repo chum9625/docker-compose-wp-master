@@ -79,19 +79,21 @@
 ### 背景
 
 - ファイルを作成するとパーミッションエラーが起き編集できない。
-- Linux(ubuntsu)環境で起きるエラー。
+- Linux(Ubuntu-20.04)環境で起きる。
 - Windowsでは問題なく編集可能。
 
 ### 回避策
 
 Windows側で開発する。
 
+#### SetUp Tips
 
+- docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
+- VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 
 ### 解決策
 
 検証中
-
 
 ## Linux Tips
 
@@ -106,3 +108,17 @@ nori
 $ id hoge
 uid=500（hoge） gid=501（hoge） 所属グループ=501（hoge）
 ```
+
+### dockerで立ち上げたコンテナにログインするには
+
+```
+docker exec -it [コンテナ名] /bin/bash
+```
+
+### ログインしたいコンテナ名やIDを確認するには
+
+```
+docker ps
+```
+
+
