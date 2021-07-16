@@ -1,11 +1,16 @@
+# docker-compose-wordpress
+
+docker-composeでWordpress開発環境を構築する手順書。
+
 ## Reference source
+
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
 - [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
 
 ## ディレクトリ構成
 
-```
+```markdown
   my-wp-project
   ├── html/
   ├── phpmyadmin/ # volumesでマウント時に生成
@@ -13,12 +18,13 @@
   ├── docker-compose.yml
   └── phpmyadmin-misc.ini  # 復元時に必要
   ```
+
 - htmlディレクトリ以下にWordPressファイル群がマウント
 - wp-contentディレクトリはテーマ開発用にマウント
 
 ## 復元操作でsqlファイルインポート時はコメントアウトを外す
 
-```
+```yml
     volumes:
       - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 ```
@@ -28,13 +34,15 @@
 ## docker-compose.ymlの補足
 
 - コンテナ名を付ける
-  ```
+
+  ```yml
   wordpress:
     container_name: my-wp-container
   ```
 
 - volumesでデータ保持
-  ```
+
+  ```yml
   wordpress:
     volumes:
       - ./html:/var/www/html
@@ -43,7 +51,7 @@
 
 - サイトアクセスにサブフォルダを付ける　例）localhost:8000/wp
 
-  ```
+  ```yml
   wordpress:
     volumes:
       - ./html:/var/www/html/wp
@@ -72,6 +80,7 @@
 ## 復元時に使用するdomain置換ツール
 
 ### [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
+
 - GitHubからcodeを落とせばユーザー情報提供不要
 
 ## volumeマウント時のファイルowner問題
@@ -84,7 +93,7 @@
 
 ### 回避策
 
-Windows側で開発する。
+Windowsで開発する。
 
 #### SetUp Tips
 
@@ -102,23 +111,22 @@ Windows側で開発する。
 - ユーザーのユーザーID（uid）やグループID（gid）を調べるには、idコマンドを使用する。
 - 以下の例では、ユーザーIDが500、グループIDが501、所属グループが501となっている。ユーザー名と同じ名前のグループ名である。
 
-```
-$ whoami
+```bash
+whoami
 hoge
-$ id hoge
+
+id hoge
 uid=500（hoge） gid=501（hoge） 所属グループ=501（hoge）
 ```
 
 ### dockerで立ち上げたコンテナにログインするには
 
-```
+```bash
 docker exec -it [コンテナ名] /bin/bash
 ```
 
 ### ログインしたいコンテナ名やIDを確認するには
 
-```
+```bash
 docker ps
 ```
-
-
