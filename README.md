@@ -17,21 +17,27 @@ docker-composeでWordpress開発環境を構築する手順書。
   ├── wp-content/
   ├── docker-compose.yml
   └── phpmyadmin-misc.ini  # 復元時に必要
-  ```
 
-- htmlディレクトリ以下にWordPressファイル群がマウント
-- wp-contentディレクトリはテーマ開発用にマウント
 
-## 復元操作でsqlファイルインポート時はコメントアウトを外す
+  ### 補足事項
+
+- htmlディレクトリ以下にWordPressファイル群がマウントされる。
+- wp-contentディレクトリはテーマ開発用にマウントする。
+- phpmyadminは必要に応じてマウントする。
+- phpmyadmin-misc.iniは復元時必要に応じてマウントする。
+
+### 復元操作
+
+- sqlファイルインポート時はymlのコメントアウトを外す
 
 ```yml
     volumes:
       - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 ```
 
-- phpmyadminディレクトリに、作成したphpmyadmin-misc.ini ファイルをマウント
+- 上記操作でphpmyadminディレクトリに、作成したphpmyadmin-misc.ini ファイルがマウントされる。
 
-## docker-compose.ymlの補足
+## docker-compose.ymlの説明
 
 - コンテナ名を付ける
 
@@ -58,58 +64,61 @@ docker-composeでWordpress開発環境を構築する手順書。
     working_dir: /var/www/html/wp
   ```
 
-## コマンド（docker-complse.ymlと同階層で実行）
+## 手順
 
-- 起動　```docker-compose up -d```
-- コンテナとデフォルトネットワーク削除　```docker-compose down```
-- コンテナとデフォルトネットワークかつデータ削除　```docker-compose down --volumes```
+- コマンドはdocker-complse.ymlと同階層で実行する。
+  - 起動　```docker-compose up -d```
+  - コンテナとデフォルトネットワーク削除　```docker-compose down```
+  - コンテナとデフォルトネットワークかつデータ削除　```docker-compose down --volumes```
 
-## 復元時に遭遇するエラー
+## エラー について
 
-- 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」
+### 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」
 
-### 原因
+#### 原因
 
-- インポートするsqlファイルのサイズ上限超過。（デフォルトは2048KB）
+- インポートするsqlファイルのサイズの上限超過で起きる。（デフォルトは2048KB）
 
-### 対処
+#### 対処
 
-- カスタム設定した phpmyadmin-misc.ini ファイルを作成し、volumesでマウント。
-- コンテナ再起動で設定反映。
+1. カスタム設定した phpmyadmin-misc.ini ファイルを作成（同梱のファイル）し、volumesでマウント。
+2. コンテナ再起動で設定反映。
 
-## 復元時に使用するdomain置換ツール
+### 【Linux特有】volumeマウント時のファイルowner問題
 
-### [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
+#### 背景
 
-- GitHubからcodeを落とせばユーザー情報提供不要
+- 新規ファイル作成や編集はパーミッションエラーのため不可。
+- Linux(Ubuntu-20.04)環境で起きた。
+- Windowsでは追加、編集可能。
 
-## volumeマウント時のファイルowner問題
+#### 回避策
 
-### 背景
+- Windowsユーザーディレクトリで開発する。
 
-- ファイルを作成するとパーミッションエラーが起き編集できない。
-- Linux(Ubuntu-20.04)環境で起きる。
-- Windowsでは問題なく編集可能。
+#### 解決策
 
-### 回避策
+検証中
 
-Windowsで開発する。
+## その他のツール
 
-#### SetUp Tips
+### 復元時に使用するdomain置換ツール
+
+- [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
+  - GitHubからcloneすればユーザー情報提供不要
+
+## Notice（その他の気づき）
+
+### Docker Desk Top SetUp Tips
 
 - docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
 - VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 
-### 解決策
+### Linux Tips
 
-検証中
-
-## Linux Tips
-
-### ユーザーのユーザーIDやグループIDを調べるには
+#### ユーザーのユーザーIDやグループIDを調べる
 
 - ユーザーのユーザーID（uid）やグループID（gid）を調べるには、idコマンドを使用する。
-- 以下の例では、ユーザーIDが500、グループIDが501、所属グループが501となっている。ユーザー名と同じ名前のグループ名である。
 
 ```bash
 whoami
@@ -119,13 +128,17 @@ id hoge
 uid=500（hoge） gid=501（hoge） 所属グループ=501（hoge）
 ```
 
-### dockerで立ち上げたコンテナにログインするには
+【解説】ユーザーIDが500、グループIDが501、所属グループが501。ユーザー名と同じ名前のグループ名である。
+
+### Dockerコマンド Tips
+
+#### dockerで立ち上げたコンテナにログインする
 
 ```bash
 docker exec -it [コンテナ名] /bin/bash
 ```
 
-### ログインしたいコンテナ名やIDを確認するには
+#### ログインしたいコンテナ名やIDを確認する
 
 ```bash
 docker ps
