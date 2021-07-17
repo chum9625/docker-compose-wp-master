@@ -17,9 +17,9 @@ docker-composeでWordpress開発環境を構築する手順書。
   ├── wp-content/
   ├── docker-compose.yml
   └── phpmyadmin-misc.ini  # 復元時に必要
+```
 
-
-  ### 補足事項
+### 補足事項
 
 - htmlディレクトリ以下にWordPressファイル群がマウントされる。
 - wp-contentディレクトリはテーマ開発用にマウントする。
@@ -31,8 +31,8 @@ docker-composeでWordpress開発環境を構築する手順書。
 - sqlファイルインポート時はymlのコメントアウトを外す
 
 ```yml
-    volumes:
-      - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+volumes:
+  - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 ```
 
 - 上記操作でphpmyadminディレクトリに、作成したphpmyadmin-misc.ini ファイルがマウントされる。
@@ -41,28 +41,28 @@ docker-composeでWordpress開発環境を構築する手順書。
 
 - コンテナ名を付ける
 
-  ```yml
+```yml
   wordpress:
     container_name: my-wp-container
-  ```
+```
 
 - volumesでデータ保持
 
-  ```yml
+```yml
   wordpress:
     volumes:
       - ./html:/var/www/html
       - ./wp-content:/var/www/html/wp-content
-  ```
+```
 
 - サイトアクセスにサブフォルダを付ける　例）localhost:8000/wp
 
-  ```yml
+```yml
   wordpress:
     volumes:
       - ./html:/var/www/html/wp
     working_dir: /var/www/html/wp
-  ```
+```
 
 ## 手順
 
