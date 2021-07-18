@@ -1,6 +1,8 @@
 # docker-compose-wordpress
 
-docker-composeでWordpress開発環境を構築する手順書。
+- docker-composeでWordpress開発環境を構築する手順書。
+- テーマ開発のための環境構築。
+- 復元とは切り分ける。 
 
 ## Reference source
 
