@@ -2,7 +2,6 @@
 
 - docker-composeでWordpress開発環境を構築する手順書。
 - テーマ開発のための環境構築。
-- 復元とは切り分ける。 
 
 ## Reference source
 
@@ -10,45 +9,50 @@
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
 - [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
 
-## ディレクトリ構成
+## Docker Composeを使う理由
 
-```markdown
-  my-wp-project
-  ├── html/
-  ├── phpmyadmin/ # volumesでマウント時に生成
-  ├── wp-content/
-  ├── docker-compose.yml
-  └── phpmyadmin-misc.ini  # 復元時に必要
+- Docker Composeは複数のコンテナを起動するツールであり、シンプルなコマンドで実行可能。
+- WordPressを動作させるために、Webサーバー、PHP、データベースをまとめて起動する。
+
+## WordPress開発環境を作る
+
+1. Docker Desktopをインストール。（Docker Composeは同梱されている）
+2. Docker Desktopの設定をする。
+   1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
+   2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
+3. WordPressの作業フォルダを作成し、そこにdocker-compose.ymlファイルを保存する。
+4. 作業フォルダ（wp-sample）に移動し、以下のコマンドで起動する。
+
+```bash
+cd wp-sample
+docker-compose up -d
 ```
 
-### 補足事項
+## WordPressの設定
 
-- htmlディレクトリ以下にWordPressファイル群がマウントされる。
-- wp-contentディレクトリはテーマ開発用にマウントする。
-- phpmyadminは必要に応じてマウントする。
-- phpmyadmin-misc.iniは復元時必要に応じてマウントする。
+1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
+2. Wordpressのセットアップを実行する。
 
-### 復元操作
+## コマンド
 
-- sqlファイルインポート時はymlのコメントアウトを外す
+- Docker Composeのバージョンチェック ```docker-compose --version```
+- Docker Composeでコンテナ起動 ```docker-compose up -d```
+- コンテナの状態を確認する ```docker-compose ps```
+- 起動した環境の停止・削除 ```docker-compose down```
+- 停止・削除・データベース削除 ```docker-compose down --volumes```
+- dockerで立ち上げたコンテナにログインする ```docker exec -it [コンテナ名] /bin/bash```
+- ログインしたいコンテナ名やIDを確認する ```docker ps```
 
-```yml
-volumes:
-  - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
-```
+## 開発しやすくする設定
 
-- 上記操作でphpmyadminディレクトリに、作成したphpmyadmin-misc.ini ファイルがマウントされる。
+### テーマ、プラグイン開発のために
 
-## docker-compose.ymlの説明
-
-- コンテナ名を付ける
-
-```yml
-  wordpress:
-    container_name: my-wp-container
-```
-
-- volumesでデータ保持
+- テーマやプラグインを直接扱えるように、作業フォルダ内にサブフォルダを作る。
+- volumesオプションで定義する。（データが保持される）
+- マウント例）
+  - サブフォルダhtml：WordPressファイル群全て
+  - サブフォルダwp-content：wp-contentフォルダのみ
+  - 上記どちらか一方でもよい
 
 ```yml
   wordpress:
@@ -57,23 +61,39 @@ volumes:
       - ./wp-content:/var/www/html/wp-content
 ```
 
-- サイトアクセスにサブフォルダを付ける　例）localhost:8000/wp
+### phpMyadminを使えるようにする
+
+- データベース操作のGUIツール：phpMyAdminが使えるようにする。
 
 ```yml
-  wordpress:
-    volumes:
-      - ./html:/var/www/html/wp
-    working_dir: /var/www/html/wp
+phpmyadmin:
+  depends_on:
+    - db
+  image: phpmyadmin/phpmyadmin
+  environment:
+    PMA_HOST: db
+  restart: always
+  ports:
+    - "8080:80"
 ```
 
-## 手順
+## ディレクトリ構成
 
-- コマンドはdocker-complse.ymlと同階層で実行する。
-  - 起動　```docker-compose up -d```
-  - コンテナとデフォルトネットワーク削除　```docker-compose down```
-  - コンテナとデフォルトネットワークかつデータ削除　```docker-compose down --volumes```
+ここまでの操作では以下となる。
+
+```markdown
+wp-sample
+├── html/
+├── phpmyadmin/
+├── wp-content/
+└── docker-compose.ym
+```
+
+---
 
 ## エラー について
+
+実行時に起きたエラーについて記録する。
 
 ### 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」
 
@@ -102,25 +122,13 @@ volumes:
 
 検証中
 
-## その他のツール
+---
 
-### 復元時に使用するdomain置換ツール
+## Linux Tips
 
-- [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
-  - GitHubからcloneすればユーザー情報提供不要
+### ユーザーのユーザーIDやグループIDを調べる
 
-## Notice（その他の気づき）
-
-### Docker Desk Top SetUp Tips
-
-- docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
-- VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
-
-### Linux Tips
-
-#### ユーザーのユーザーIDやグループIDを調べる
-
-- ユーザーのユーザーID（uid）やグループID（gid）を調べるには、idコマンドを使用する。
+- ユーザーID（uid）やグループID（gid）を調べるには、idコマンドを使用する。
 
 ```bash
 whoami
@@ -131,17 +139,3 @@ uid=500（hoge） gid=501（hoge） 所属グループ=501（hoge）
 ```
 
 【解説】ユーザーIDが500、グループIDが501、所属グループが501。ユーザー名と同じ名前のグループ名である。
-
-### Dockerコマンド Tips
-
-#### dockerで立ち上げたコンテナにログインする
-
-```bash
-docker exec -it [コンテナ名] /bin/bash
-```
-
-#### ログインしたいコンテナ名やIDを確認する
-
-```bash
-docker ps
-```
