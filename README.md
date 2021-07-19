@@ -2,6 +2,8 @@
 
 - docker-composeでWordpress開発環境を構築する手順書。
 - テーマ開発のための環境構築。
+- 復元とは切り分ける。
+  - [復元時の補足はこちら](wp-restore.md)
 
 ## Reference source
 
@@ -94,17 +96,6 @@ wp-sample
 ## エラー について
 
 実行時に起きたエラーについて記録する。
-
-### 【phpMyAdmin】sqlファイルのインポートエラー「Incorrect format parameter」
-
-#### 原因
-
-- インポートするsqlファイルのサイズの上限超過で起きる。（デフォルトは2048KB）
-
-#### 対処
-
-1. カスタム設定した phpmyadmin-misc.ini ファイルを作成（同梱のファイル）し、volumesでマウント。
-2. コンテナ再起動で設定反映。
 
 ### 【Linux特有】volumeマウント時のファイルowner問題
 
