@@ -86,7 +86,7 @@ wp-sample
 ├── html/
 ├── phpmyadmin/
 ├── wp-content/
-└── docker-compose.ym
+└── docker-compose.yml
 ```
 
 ---
