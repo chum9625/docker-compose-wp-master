@@ -21,7 +21,7 @@
    1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 3. WordPressの作業フォルダを作成し、そこにdocker-compose.ymlファイルを保存する。
-4. 作業フォルダ（wp-sample）に移動し、以下のコマンドで起動する。
+4. 作業フォルダ（wp-sample）に移動し、以下のコマンドでコンテナを起動する。
 
 ```bash
 cd wp-sample
@@ -63,7 +63,7 @@ docker-compose up -d
 
 ### phpMyadminを使えるようにする
 
-- データベース操作のGUIツール：phpMyAdminが使えるようにする。
+- データベース操作のGUIツール：phpMyAdminを使えるようにする。
 
 ```yml
 phpmyadmin:
