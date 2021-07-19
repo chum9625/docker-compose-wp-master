@@ -1,6 +1,6 @@
 # wp-restore
 
-- Wordpressを復元する際の要点など。（未完）
+- WordPressを復元する際の要点など。（未完）
 
 ## Reference source
 
