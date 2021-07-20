@@ -6,14 +6,19 @@
 
 - [WordPress Search Replace DB の使い方](https://www.webdesignleaves.com/pr/wp/wp_search_replace_db.html/)
 
-## 復元時必要な操作
+## 移行（復元）前の準備
 
-データベース復元時に行う操作。
+1. 万が一に備えて移行元のデータをバックアップ
+2. 移行元のデータ（全てのファイル）を移行先に設置
+3. 移行元のデータベースをエクスポート
+4. 移行先に空のデータベースを作成
+5. エクスポートした移行元のデータベースを移行先のデータベースにインポート
+6. .htaccess や wp-config.php を移行先の環境に合わせて修正
 
 ### 1. 同梱のphpmyadmin-misc.iniファイルをマウント
 
-- sqlファイルインポート時はymlのコメントアウトを外し、volumesでマウントする。
-- 同梱のphpmyadmin-misc.iniファイルはインポートサイズの拡張設定をしている。
+- ymlのコメントアウトを外す。
+- 同梱のphpmyadmin-misc.iniはインポートサイズの拡張設定されたもの。
 - 以下は該当箇所。
 
 ```yml
@@ -21,12 +26,13 @@ volumes:
   - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 ```
 
-### 2. sqlファイルのインポート
+### 2. Dockerコンテナの起動
 
-1. 移行元サーバーからsqlファイルをエクスポート。
-2. localhostのphpMyadminにログインし、sqlファイルをインポート。
+```bash
+docker-compose up -d
+```
 
-### 3. domain置換ツールの使用
+### 3. domain置換ツールのインストール
 
 1. [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
    1. GitHubからcloneすればユーザー情報提供不要
