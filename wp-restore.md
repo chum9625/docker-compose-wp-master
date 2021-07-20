@@ -1,6 +1,6 @@
 # wp-restore
 
-- WordPressを復元する際の要点など。（未完）
+- WordPressを復元する際の要点など。（進行中）
 
 ## Reference source
 
@@ -21,7 +21,12 @@ volumes:
   - ./phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
 ```
 
-### 2. domain置換ツールの使用
+### 2. sqlファイルのインポート
+
+1. 移行元サーバーからsqlファイルをエクスポート。
+2. localhostのphpMyadminにログインし、sqlファイルをインポート。
+
+### 3. domain置換ツールの使用
 
 1. [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
    1. GitHubからcloneすればユーザー情報提供不要
