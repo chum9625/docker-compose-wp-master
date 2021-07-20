@@ -4,8 +4,7 @@
 
 ## Reference source
 
-- [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
-- [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
+- [WordPress Search Replace DB の使い方](https://www.webdesignleaves.com/pr/wp/wp_search_replace_db.html/)
 
 ## 復元時必要な操作
 
@@ -24,8 +23,10 @@ volumes:
 
 ### 2. domain置換ツールの使用
 
-- [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
-  - GitHubからcloneすればユーザー情報提供不要
+1. [Database Search and Replace Script in PHP](https://github.com/interconnectit/Search-Replace-DB)
+   1. GitHubからcloneすればユーザー情報提供不要
+2. 展開したフォルダ（Search-Replace-DB-master）をデータベースを編集するサイトのwp-adminやwp-content、wp-includesと同じ階層に配置。
+3. 配置後、ブラウザで「ｈttp://ドメイン名/Search-Replace-DB-master/」にアクセスして設定画面が表示されればインストールは完了。
 
 ---
 
