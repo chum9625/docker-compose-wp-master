@@ -34,6 +34,7 @@ docker-compose up -d
 
 1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
 2. Wordpressのセットアップを実行する。
+3. ※セットアップ前に[開発しやすくなる設定](#開発しやすくする設定)に目を通す※
 
 ## コマンド
 
@@ -47,7 +48,9 @@ docker-compose up -d
 
 ## 開発しやすくする設定
 
-### テーマ、プラグイン開発のために
+### テーマ、プラグイン開発に便利
+
+#### その1. wp-contentディレクトリをマウント
 
 - テーマやプラグインを直接扱えるように、作業フォルダ内にサブフォルダを作る。
 - volumesオプションで定義する。（データが保持される）
@@ -61,6 +64,18 @@ docker-compose up -d
     volumes:
       - ./html:/var/www/html
       - ./wp-content:/var/www/html/wp-content
+```
+
+#### その2. 開発用空テーマをダウンロード
+
+- [underscores.me](https://underscores.me/) で、空テーマを取得する。
+- *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
+- ダウンロードしたものを作業フォルダ（wp-sample）に配置する。
+- ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
+
+```yml
+ volumes:
+      - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
 ### phpMyadminを使えるようにする
@@ -87,7 +102,8 @@ phpmyadmin:
 wp-sample
 ├── html/
 ├── phpmyadmin/
-├── wp-content/
+├── wp-content/   #どちらか一方でよい
+├── my-theme/    #どちらか一方でよい
 └── docker-compose.yml
 ```
 
