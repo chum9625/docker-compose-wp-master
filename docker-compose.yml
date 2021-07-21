@@ -18,8 +18,9 @@ services:
       - db
     image: wordpress:latest
     volumes:
-      - ./html:/var/www/html
-      - ./wp-content:/var/www/html/wp-content
+      - ./html:/var/www/html #wordpressファイル群格納用
+      - ./wp-content:/var/www/html/wp-content #テーマ、プラグイン開発用
+      - ./my-theme:/var/www/html/wp-content/themes/my-theme #オリジナルテーマ開発用空テーマ
     ports:
       - "8000:80"
     restart: always
