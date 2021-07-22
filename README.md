@@ -102,7 +102,7 @@ phpmyadmin:
 ```markdown
 wp-sample
 ├── html/
-├── phpmyadmin/
+├── phpmyadmin/   # volumesを追記した場合
 ├── wp-content/   #どちらか一方でよい
 ├── my-theme/    #どちらか一方でよい
 └── docker-compose.yml
