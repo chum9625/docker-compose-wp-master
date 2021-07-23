@@ -16,23 +16,29 @@
 - Docker Composeは複数のコンテナを起動するツールであり、シンプルなコマンドで実行可能。
 - WordPressを動作させるために、Webサーバー、PHP、データベースをまとめて起動する。
 
-## WordPress開発環境を作る
+## 環境構築手順
+
+
+
+### 1. WordPress開発環境を作る
 
 1. Docker Desktopをインストール。（Docker Composeは同梱されている）
 2. Docker Desktopの設定をする。
    1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
-3. WordPressの作業フォルダを作成し、そこにdocker-compose.ymlファイルを保存する。
-4. 作業フォルダ（wp-sample）に移動し、以下のコマンドでコンテナを起動する。
+3. WordPressの作業フォルダ「wp-sample」を作成し、そこにdocker-compose.ymlファイルを保存する。
 
-__※コンテナ起動前に[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
+### 2. Dockerコンテナの起動
+
+1. __※コンテナ起動前に[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
+2. 作業フォルダ（wp-sample）に移動し、以下のコマンドでコンテナを起動する。
 
 ```bash
 cd wp-sample
 docker-compose up -d
 ```
 
-## WordPressの設定
+### 3. WordPressの設定
 
 1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
 2. Wordpressのセットアップを実行する。
@@ -49,7 +55,7 @@ docker-compose up -d
 
 ## 開発しやすくする設定
 
-### テーマ、プラグイン開発に便利
+### テーマ、プラグイン開発に便利な設定
 
 #### その1. wp-contentディレクトリをマウント
 
@@ -70,6 +76,7 @@ docker-compose up -d
 #### その2. 開発用空テーマをダウンロード
 
 - [underscores.me](https://underscores.me/) で、空テーマを取得する。
+  - sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。 
 - *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
 - ダウンロードしたものを作業フォルダ（wp-sample）に配置する。
 - ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
