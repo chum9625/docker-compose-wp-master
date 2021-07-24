@@ -111,7 +111,7 @@ phpmyadmin:
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
 
 1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlをダウンロードする。
-2. 管理画面のツール->インポートで「WordPress」からインポートする。
+2. 管理画面のツール->インポートの「WordPress」からインポートを実行する。
 
 ## ディレクトリ構成
 
