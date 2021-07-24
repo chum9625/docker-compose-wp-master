@@ -13,37 +13,41 @@
 
 ## Docker Composeを使う理由
 
+- 環境構築の統一化が図れる。
 - Docker Composeは複数のコンテナを起動するツールであり、シンプルなコマンドで実行可能。
-- WordPressを動作させるために、Webサーバー、PHP、データベースをまとめて起動する。
+- WordPressを動作させるための、Webサーバー、PHP、データベースをまとめて起動できる。
 
 ## 環境構築手順
 
-Docker Desktop設定後は工程1の3以降を実行すればよい。
+初期設定（手順0）済みならば、手順1～3を実行しテーマ開発をスタートする。
 
-### 1. WordPress開発環境を作る
+### 手順0. 準備
 
 1. Docker Desktopをインストール。（Docker Composeは同梱されている）
 2. Docker Desktopの設定をする。
    1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
-3. WordPressの作業フォルダ「wp-sample」を作成し、そこにdocker-compose.ymlファイルを保存する。
 
-### 2. Dockerコンテナの起動
+### 手順1. WordPress作業フォルダを作る
+
+- WordPressの作業フォルダ「wp-sample」を作成し、そこにdocker-compose.ymlファイルを保存する。
+
+### 手順2. Dockerコンテナの起動
 
 1. __※コンテナ起動前に[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
-2. 作業フォルダ（wp-sample）に移動し、以下のコマンドでコンテナを起動する。
+2. 作業フォルダ（wp-sample）に移動し、コンテナを起動する。（コマンド例は下記）
 
 ```bash
 cd wp-sample
 docker-compose up -d
 ```
 
-### 3. WordPressの設定
+### 手順3. WordPressの設定
 
 1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
 2. Wordpressのセットアップを実行する。
 
-## コマンド
+## 主要コマンド
 
 - Docker Composeのバージョンチェック ```docker-compose --version```
 - Docker Composeでコンテナ起動 ```docker-compose up -d```
@@ -55,9 +59,9 @@ docker-compose up -d
 
 ## 開発しやすくする設定
 
-### テーマ、プラグイン開発に便利な設定
+テーマ、プラグイン開発に便利な設定や、データベースを扱うGUI設定。
 
-#### その1. wp-contentディレクトリをマウント
+### 1. wp-contentディレクトリをマウントする
 
 - テーマやプラグインを直接扱えるように、作業フォルダ内にサブフォルダを作る。
 - volumesオプションで定義する。（データが保持される）
@@ -73,7 +77,7 @@ docker-compose up -d
       - ./wp-content:/var/www/html/wp-content
 ```
 
-#### その2. 開発用空テーマをダウンロード
+### 2. 開発用空テーマをダウンロードし、そのディレクトリをマウントする
 
 - [underscores.me](https://underscores.me/) で、空テーマを取得する。
   - sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。 
@@ -86,7 +90,7 @@ docker-compose up -d
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-### phpMyadminを使えるようにする
+### 3. phpMyadminを使えるようにする
 
 - データベース操作のGUIツール：phpMyAdminを使えるようにする。
 
@@ -110,8 +114,8 @@ phpmyadmin:
 wp-sample
 ├── html/
 ├── phpmyadmin/   # volumesを追記した場合
-├── wp-content/   #どちらか一方でよい
-├── my-theme/    #どちらか一方でよい
+├── wp-content/   #どちらか一方でもよい
+├── my-theme/    #どちらか一方でもよい
 └── docker-compose.yml
 ```
 
