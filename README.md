@@ -1,6 +1,6 @@
 # docker-compose-wordpress
 
-- docker-composeでWordpress開発環境を構築する手順書。
+- docker-composeでWordPress開発環境を構築する手順書。
 - テーマ開発のための環境構築。
 - 復元とは切り分ける。
   - [復元時の補足はこちら](wp-restore.md)
@@ -14,7 +14,7 @@
 ## Docker Composeを使う理由
 
 - 環境構築の統一化が図れる。
-- Docker Composeは複数のコンテナを起動するツールであり、シンプルなコマンドで実行可能。
+- Docker Composeは複数のコンテナーを起動するツールであり、シンプルなコマンドで実行可能。
 - WordPressを動作させるための、Webサーバー、PHP、データベースをまとめて起動できる。
 
 ## 環境構築手順
@@ -25,17 +25,17 @@
 
 1. Docker Desktopをインストール。（Docker Composeは同梱されている）
 2. Docker Desktopの設定をする。
-   1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04 をONにする。
+   1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 
-### 手順1. WordPress作業フォルダを作る
+### 手順1. WordPress作業フォルダーを作る
 
-- WordPressの作業フォルダ「wp-sample」を作成し、そこにdocker-compose.ymlファイルを保存する。
+- WordPressの作業フォルダー「wp-sample」を作成し、そこにdocker-compose.ymlファイルを保存する。
 
-### 手順2. Dockerコンテナの起動
+### 手順2. Dockerコンテナーの起動
 
-1. __※コンテナ起動前に[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
-2. 作業フォルダ（wp-sample）に移動し、コンテナを起動する。（コマンド例は下記）
+1. __※コンテナー起動前に[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
+2. 作業フォルダー（wp-sample）に移動し、コンテナーを起動する。（コマンド例は下記）
 
 ```bash
 cd wp-sample
@@ -44,18 +44,18 @@ docker-compose up -d
 
 ### 手順3. WordPressの設定
 
-1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
-2. Wordpressのセットアップを実行する。
+1. Dockerコンテナー起動後、ブラウザで「localhost:8000」にアクセスする。
+2. WordPressのセットアップを実行する。
 
 ## 主要コマンド
 
 - Docker Composeのバージョンチェック ```docker-compose --version```
-- Docker Composeでコンテナ起動 ```docker-compose up -d```
-- コンテナの状態を確認する ```docker-compose ps```
+- Docker Composeでコンテナー起動 ```docker-compose up -d```
+- コンテナーの状態を確認する ```docker-compose ps```
 - 起動した環境の停止・削除 ```docker-compose down```
 - 停止・削除・データベース削除 ```docker-compose down --volumes```
-- dockerで立ち上げたコンテナにログインする ```docker exec -it [コンテナ名] /bin/bash```
-- ログインしたいコンテナ名やIDを確認する ```docker ps```
+- dockerで立ち上げたコンテナーにログインする ```docker exec -it [コンテナ名] /bin/bash```
+- ログインしたいコンテナー名やIDを確認する ```docker ps```
 
 ## 開発しやすくする設定
 
@@ -63,11 +63,11 @@ docker-compose up -d
 
 ### 1. wp-contentディレクトリをマウントする
 
-- テーマやプラグインを直接扱えるように、作業フォルダ内にサブフォルダを作る。
+- テーマやプラグインを直接扱えるように、作業フォルダー内にサブフォルダーを作る。
 - volumesオプションで定義する。（データが保持される）
 - マウント例）
-  - サブフォルダhtml：WordPressファイル群全て
-  - サブフォルダwp-content：wp-contentフォルダのみ
+  - サブフォルダーhtml：WordPressファイル群すべて
+  - サブフォルダーwp-content：wp-contentフォルダーのみ
   - 上記どちらか一方でもよい
 
 ```yml
@@ -80,9 +80,9 @@ docker-compose up -d
 ### 2. 開発用空テーマをダウンロードし、そのディレクトリをマウントする
 
 - [underscores.me](https://underscores.me/) で、空テーマを取得する。
-  - sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。 
+  - sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
 - *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
-- ダウンロードしたものを作業フォルダ（wp-sample）に配置する。
+- ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
 - ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
 
 ```yml
