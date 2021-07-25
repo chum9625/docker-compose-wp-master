@@ -79,18 +79,52 @@ docker-compose up -d
 
 ### 2. 開発用空テーマをダウンロードし、そのディレクトリをマウントする
 
-- [underscores.me](https://underscores.me/) で、空テーマを取得する。
+1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
   - sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
-- *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
-- ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
-- ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
+2. *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
+3. ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
+4. ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
 
 ```yml
  volumes:
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-### 3. phpMyadminを使えるようにする
+### 3. タスクランナーの設定
+
+**前提：タスクランナーはテーマディレクトリで動かす。**
+
+1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。インストール有無の確認。
+
+```bash
+node --version
+```
+ 
+2. テーマディレクトリに移動し、npmのパッケージをインストールする。
+
+```bash
+npm install
+```
+
+3. 以下のコマンドでSassファイルの監視が始まり、Sassファイルに変更を加えると自動的にCSSファイルにコンパイルする。
+
+```
+npm run watch
+```
+
+### 4. Browser-syncを使う
+
+Browsersyncはファイルを監視し、ブラウザをリロードして変更を反映するツール。
+PCやスマートフォンなど複数の端末でスクロールやページ遷移を同期することもできる。
+
+### 5. テーマユニットテストデータ日本語版のインポート
+
+投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
+
+1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlをダウンロードする。
+2. 管理画面のツール->インポートの「WordPress」からインポートを実行する。
+
+### 5. phpMyadminを使えるようにする
 
 - データベース操作のGUIツール：phpMyAdminを使えるようにする。
 
@@ -105,13 +139,6 @@ phpmyadmin:
   ports:
     - "8080:80"
 ```
-
-### 4. テーマユニットテストデータ日本語版のインポート
-
-投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
-
-1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlをダウンロードする。
-2. 管理画面のツール->インポートの「WordPress」からインポートを実行する。
 
 ## ディレクトリ構成
 
