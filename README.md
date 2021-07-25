@@ -10,6 +10,7 @@
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
 - [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
+- [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
 
 ## Docker Composeを使う理由
 
@@ -97,7 +98,7 @@ docker-compose up -d
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。インストール有無の確認。
 
 ```bash
-node --version
+node -v
 ```
  
 2. テーマディレクトリに移動し、npmのパッケージをインストールする。
