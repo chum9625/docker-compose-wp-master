@@ -107,7 +107,7 @@ wp-sample
 ### 3. タスクランナーの設定手順
 
 - 【注1】**前提：タスクランナーはテーマディレクトリで動かす。**
-- 【注2】__*package.json*がなければ*npm install*する前に*npm init*で*package.json*を作成する。__
+- 【注2】__*package.json*が無い場合、*npm install*する前に*npm init*で*package.json*を作成する。__
 
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
 2. インストール有無の確認。```node -v```
