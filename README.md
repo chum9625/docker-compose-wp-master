@@ -1,7 +1,7 @@
 # docker-compose-wordpress
 
 - docker-composeでWordPress開発環境を構築する手順書。
-- 効率よくテーマを開発するための環境構築併せて記載しています。
+- 効率よくテーマを開発するための設定を併せて記載しています。
 - 復元とは切り分けよう。（環境構築が煩雑になるため）
   - [復元時の補足はこちら](wp-restore.md)
 
@@ -107,15 +107,17 @@ wp-sample
 ### 3. タスクランナーの設定手順
 
 - 【注1】**前提：タスクランナーはテーマディレクトリで動かす。**
-- 【注2】**_package.json_がなければ*npm install*する前に*npm init*で*package.json*を作成する。**
+- 【注2】***package.json*がなければ*npm install*する前に*npm init*で*package.json*を作成する。**
 
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
 2. インストール有無の確認。```node -v```
 3. テーマディレクトリに移動。```cd my-theme```
-4. npmのパッケージをインストールする。```npm install```
-5. Sassファイルの監視スタート。```npm run watch```
+4. npm初期化でpackage.jsonを作成する。。```npm init```
+5. package.jsonでプラグインの設定をする。
+6. npmのパッケージをインストールする。```npm install```
+7. Sassファイルの監視スタート。```npm run watch```
 
-### 4. Browser-syncを使う
+### 4. Browser-syncを使う （更新中）
 
 Browsersyncはファイルを監視し、ブラウザをリロードして変更を反映するツール。
 PCやスマートフォンなど複数の端末でスクロールやページ遷移を同期することもできる。
@@ -124,10 +126,10 @@ PCやスマートフォンなど複数の端末でスクロールやページ遷
 
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
 
-1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlをダウンロードする。
+1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
 
-### 5. phpMyadminを使えるようにする
+### 6. phpMyadminを使えるようにする
 
 - データベース操作のGUIツール：phpMyAdminを使えるようにする。
 
