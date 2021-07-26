@@ -48,6 +48,19 @@ docker-compose up -d
 1. Dockerコンテナー起動後、ブラウザで「localhost:8000」にアクセスする。
 2. WordPressのセットアップを実行する。
 
+## ディレクトリ構成
+
+ここまでの操作では以下となる。
+
+```markdown
+wp-sample
+├── html/
+├── phpmyadmin/   # volumesを追記した場合
+├── wp-content/   #どちらか一方でもよい
+├── my-theme/    #どちらか一方でもよい
+└── docker-compose.yml
+```
+
 ## Docker主要コマンド
 
 - Docker Composeのバージョンチェック ```docker-compose --version```
@@ -93,7 +106,8 @@ docker-compose up -d
 
 ### 3. タスクランナーの設定手順
 
-**前提：タスクランナーはテーマディレクトリで動かす。**
+- 【注1】**前提：タスクランナーはテーマディレクトリで動かす。**
+- 【注2】**_package.json_がなければ_npm install_する前に_npm init_で_package.json_を作成する。**
 
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
 2. インストール有無の確認。```node -v```
@@ -127,19 +141,6 @@ phpmyadmin:
   restart: always
   ports:
     - "8080:80"
-```
-
-## ディレクトリ構成
-
-ここまでの操作では以下となる。
-
-```markdown
-wp-sample
-├── html/
-├── phpmyadmin/   # volumesを追記した場合
-├── wp-content/   #どちらか一方でもよい
-├── my-theme/    #どちらか一方でもよい
-└── docker-compose.yml
 ```
 
 ---
