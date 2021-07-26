@@ -1,8 +1,8 @@
 # docker-compose-wordpress
 
 - docker-composeでWordPress開発環境を構築する手順書。
-- テーマ開発のための環境構築。
-- 復元とは切り分ける。
+- 効率よくテーマを開発するための環境構築併せて記載しています。
+- 復元とは切り分けよう。（環境構築が煩雑になるため）
   - [復元時の補足はこちら](wp-restore.md)
 
 ## Reference source
@@ -48,7 +48,7 @@ docker-compose up -d
 1. Dockerコンテナー起動後、ブラウザで「localhost:8000」にアクセスする。
 2. WordPressのセットアップを実行する。
 
-## 主要コマンド
+## Docker主要コマンド
 
 - Docker Composeのバージョンチェック ```docker-compose --version```
 - Docker Composeでコンテナー起動 ```docker-compose up -d```
@@ -60,7 +60,7 @@ docker-compose up -d
 
 ## 開発しやすくする設定
 
-テーマ、プラグイン開発に便利な設定や、データベースを扱うGUI設定。
+テーマ、プラグイン開発を効率よく行うための設定。
 
 ### 1. wp-contentディレクトリをマウントする
 
@@ -95,23 +95,12 @@ docker-compose up -d
 
 **前提：タスクランナーはテーマディレクトリで動かす。**
 
-1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。インストール有無の確認。
-
-```bash
-node -v
-```
+1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
+  - インストール有無の確認。```node -v```
  
-2. テーマディレクトリに移動し、npmのパッケージをインストールする。
+2. テーマディレクトリに移動し、npmのパッケージをインストールする。```npm install```
 
-```bash
-npm install
-```
-
-3. 以下のコマンドでSassファイルの監視が始まり、Sassファイルに変更を加えると自動的にCSSファイルにコンパイルする。
-
-```
-npm run watch
-```
+3. Sassファイルの監視スタート。```npm run watch```
 
 ### 4. Browser-syncを使う
 
