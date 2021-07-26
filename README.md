@@ -64,9 +64,9 @@ docker-compose up -d
 
 ### 1. wp-contentディレクトリをマウントする
 
-- テーマやプラグインを直接扱えるように、作業フォルダー内にサブフォルダーを作る。
-- volumesオプションで定義する。（データが保持される）
-- マウント例）
+1. テーマやプラグインを直接扱えるように、作業フォルダー内にサブフォルダーを作る。
+2. volumesオプションで定義する。（データが保持される）
+3. マウント例）
   - サブフォルダーhtml：WordPressファイル群すべて
   - サブフォルダーwp-content：wp-contentフォルダーのみ
   - 上記どちらか一方でもよい
@@ -91,16 +91,15 @@ docker-compose up -d
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-### 3. タスクランナーの設定
+### 3. タスクランナーの設定手順
 
 **前提：タスクランナーはテーマディレクトリで動かす。**
 
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
-  - インストール有無の確認。```node -v```
- 
-2. テーマディレクトリに移動し、npmのパッケージをインストールする。```npm install```
-
-3. Sassファイルの監視スタート。```npm run watch```
+2. インストール有無の確認。```node -v```
+3. テーマディレクトリに移動。```cd my-theme```
+4. npmのパッケージをインストールする。```npm install```
+5. Sassファイルの監視スタート。```npm run watch```
 
 ### 4. Browser-syncを使う
 
