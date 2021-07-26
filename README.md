@@ -35,7 +35,7 @@
 
 ### 手順2. Dockerコンテナーの起動
 
-1. __※コンテナー起動前に[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
+1. __※コンテナー起動前の確認事項：[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する※__
 2. 作業フォルダー（wp-sample）に移動し、コンテナーを起動する。（コマンド例は下記）
 
 ```bash
@@ -80,9 +80,9 @@ wp-sample
 1. テーマやプラグインを直接扱えるように、作業フォルダー内にサブフォルダーを作る。
 2. volumesオプションで定義する。（データが保持される）
 3. マウント例）
-  - サブフォルダーhtml：WordPressファイル群すべて
-  - サブフォルダーwp-content：wp-contentフォルダーのみ
-  - 上記どちらか一方でもよい
+   - サブフォルダーhtml：WordPressファイル群すべて
+   - サブフォルダーwp-content：wp-contentフォルダーのみ
+   - 上記どちらか一方でもよい
 
 ```yml
   wordpress:
@@ -94,7 +94,7 @@ wp-sample
 ### 2. 開発用空テーマをダウンロードし、そのディレクトリをマウントする
 
 1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
-  - sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
+   1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
 2. *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
 3. ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
 4. ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
@@ -125,7 +125,7 @@ PCやスマートフォンなど複数の端末でスクロールやページ遷
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
 
 1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlをダウンロードする。
-2. 管理画面のツール->インポートの「WordPress」からインポートを実行する。
+2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
 
 ### 5. phpMyadminを使えるようにする
 
