@@ -8,7 +8,7 @@
 ## 実行環境
 
 - Ubuntu-20.04（owner問題あり）
-- Windows10
+- Windows 10
 - Mac OS Big Sur
 
 ## Reference source
@@ -113,7 +113,7 @@ wp-sample
 ### 3. タスクランナーの設定手順
 
 - 【注1】**前提：タスクランナーはテーマディレクトリで動かす。**
-- 【注2】__*package.json*が無い場合、*npm install*する前に*npm init*で*package.json*を作成する。__
+- 【注2】__*package.json*がない場合、*npm install*する前に*npm init*で*package.json*を作成する。__
 
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
 2. インストール有無の確認。```node -v```
@@ -123,7 +123,7 @@ wp-sample
 6. npmのパッケージをインストールする。```npm install```
 7. Sassファイルの監視スタート。```npm run watch```
 
-### 4. Browser-syncを使う （更新中）
+### 4. Browser-syncを使う（更新中）
 
 Browsersyncはファイルを監視し、ブラウザをリロードして変更を反映するツール。
 PCやスマートフォンなど複数の端末でスクロールやページ遷移を同期することもできる。
