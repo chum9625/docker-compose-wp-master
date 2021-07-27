@@ -5,6 +5,12 @@
 - 復元とは切り分けよう。（環境構築が煩雑になるため）
   - [復元時の補足はこちら](wp-restore.md)
 
+## 実行環境
+
+- Ubuntu-20.04（owner問題あり）
+- Windows10
+- Mac OS Big Sur
+
 ## Reference source
 
 - [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
@@ -25,7 +31,7 @@
 ### 手順0. 準備
 
 1. Docker Desktopをインストール。（Docker Composeは同梱されている）
-2. Docker Desktopの設定をする。
+2. __※only WSL※__ Docker Desktopの設定をする。
    1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 
