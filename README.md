@@ -123,7 +123,7 @@ wp-sample
 6. npmのパッケージをインストールする。```npm install```
 7. Sassファイルの監視スタート。```npm run watch```
 
-### 4. Browser-syncを使う（更新中）
+### 4. Browser-syncを使う（整備中）
 
 Browsersyncはファイルを監視し、ブラウザをリロードして変更を反映するツール。
 PCやスマートフォンなど複数の端末でスクロールやページ遷移を同期することもできる。
