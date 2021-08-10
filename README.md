@@ -7,7 +7,9 @@
 
 ## 実行環境
 
-- Ubuntu-20.04（owner問題あり）
+- Ubuntu-20.04
+  - windows user
+  - linux user（owner問題あり）
 - Windows 10
 - Mac OS Big Sur
 
@@ -157,17 +159,17 @@ phpmyadmin:
 
 実行時に起きたエラーについて記録する。
 
-### 【WSL特有】volumeマウント時のファイルowner問題
+### 【Linux特有】volumeマウント時のファイルowner問題
 
 #### 背景
 
 - 新規ファイル作成や編集はパーミッションエラーのため不可。
-- WSL2(Ubuntu-20.04)環境で起きた。
-- Windows環境では編集可能。
+- WSL2(Ubuntu-20.04) userで起きた。
+- windows userでは編集可能。
 
 #### 回避策
 
-- Windows環境で開発する。
+- windows user環境で開発する。
 
 #### 解決策
 
