@@ -1,10 +1,6 @@
 # wp-restore（整備中）
 
-<<<<<<< HEAD
 - WordPressを復元する際の要点など。（ドキュメント整備中）
-=======
-- WordPressを復元する際の要点など。
->>>>>>> 3ed4da1aa1f2813b8829dc62b627224ca86d0d97
 
 ## Reference source
 
