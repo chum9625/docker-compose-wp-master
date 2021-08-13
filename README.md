@@ -37,9 +37,9 @@
    1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 
-### 手順1. リポジトリをForkする
+### 手順1. リポジトリをCloneする
 
-- このリポジトリをForkし、ディレクトリ名を変更。
+- このリポジトリをCloneし、ディレクトリ名を変更。
 
 ### 手順2. Dockerコンテナーの起動
 
