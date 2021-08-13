@@ -1,7 +1,7 @@
 # docker-compose-wordpress
 
 - docker-composeでWordPress開発環境を構築する手順書。
-- テーマ開発のための環境構築。
+- 新規テーマ開発のための環境構築について記述しています。
 - 復元とは切り分ける。
   - [復元時の補足はこちら](wp-restore.md)
 
@@ -28,9 +28,9 @@
    1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04をONにする。
    2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
 
-### 手順1. WordPress作業フォルダーを作る
+### 手順1. リポジトリをForkする
 
-- WordPressの作業フォルダー「wp-sample」を作成し、そこにdocker-compose.ymlファイルを保存する。
+- このリポジトリをForkし、ディレクトリ名を変更。
 
 ### 手順2. Dockerコンテナーの起動
 

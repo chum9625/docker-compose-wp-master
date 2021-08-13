@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: db-user
       MYSQL_PASSWORD: db-pass
-    
+
   wordpress:
     container_name: my-wp-container
     depends_on:
@@ -20,7 +20,7 @@ services:
     volumes:
       - ./html:/var/www/html #wordpressファイル群格納用
       - ./wp-content:/var/www/html/wp-content #テーマ、プラグイン開発用
-      - ./my-theme:/var/www/html/wp-content/themes/my-theme #オリジナルテーマ開発用空テーマ
+      - ./**my-theme**:/var/www/html/wp-content/themes/**my-theme** #オリジナルテーマ開発用空テーマ**my-theme**部分は適宜変更。
     ports:
       - "8000:80"
     restart: always
