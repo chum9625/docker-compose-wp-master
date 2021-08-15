@@ -19,6 +19,10 @@
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
 - [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
 - [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
+- [絶対つまずかないGulp 4入門(2021年版)インストールとSassを使うまでの手順](https://ics.media/entry/3290/)
+- [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
+- [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
+
 
 ## Docker Composeを使う理由
 
@@ -114,30 +118,35 @@ wp-sample
 
 ### 3. タスクランナーの設定手順
 
-- 【注1】**前提：タスクランナーはテーマディレクトリで動かす。**
+- 【注1】**前提：タスクランナーはテーマディレクトリ（ローカル=作業フォルダー）で動かす。**
 - 【注2】__*package.json*がない場合、*npm install*する前に*npm init*で*package.json*を作成する。__
 
 1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
-2. インストール有無の確認。```node -v```
+2. Nodeインストール有無の確認。```node -v```
 3. テーマディレクトリに移動。```cd my-theme```
-4. npm初期化でpackage.jsonを作成する。```npm init```
-5. package.jsonでプラグインの設定をする。
-6. npmのパッケージをインストールする。```npm install```
-7. Sassファイルの監視スタート。```npm run watch```
+4. npm初期化でpackage.jsonを作成する。```npm init -y```
+5. Gulpのインストール。```npm install -D gulp```
 
-### 4. Browser-syncを使う（整備中）
+### 4. タスクの作成（document整備中）
 
-Browsersyncはファイルを監視し、ブラウザをリロードして変更を反映するツール。
-PCやスマートフォンなど複数の端末でスクロールやページ遷移を同期することもできる。
+1. SassをGulpでコンパイルするために必要なモジュールをローカルにインストールする。```npm install -D gulp gulp-sass```
+  1. Gulp本体のgulp
+  2. Sassファイルをコンパイルするためのプラグインgulp-sass
+2. 作業フォルダー直下にgulpfile.jsを作成する。
+  1. **Gulp3系とGulp4系でgulpfile.jsの記述が異なっている。4系で進める。**
 
-### 5. テーマユニットテストデータ日本語版のインポート
+### 5. タスクの実行
+
+```npx gulp```
+
+### 6. テーマユニットテストデータ日本語版のインポート
 
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
 
 1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
 
-### 6. phpMyadminを使えるようにする
+### 7. phpMyadminを使えるようにする
 
 - データベース操作のGUIツール：phpMyAdminを使えるようにする。
 
@@ -155,7 +164,7 @@ phpmyadmin:
 
 ---
 
-## エラー について
+## エラーの記録
 
 実行時に起きたエラーについて記録する。
 
