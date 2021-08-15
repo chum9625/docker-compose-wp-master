@@ -130,17 +130,17 @@ wp-sample
 ### 4. タスクの作成（document整備中）
 
 1. 各タスクで使うGulpのプラグインをローカルにインストールする。
-  1. ```npm i -D gulp```//gulp本体
-  2. ```npm i -D gulp-cssmin```//CSS圧縮
-  3. ```npm i -D gulp-uglify```//javascript圧縮
-  4. ```npm i -D gulp-imagemin```//画像圧縮
-  5. ```npm i -D gulp-sass node-sass```//Sassコンパイル
-  6. ```npm i -D gulp-rename```//ファイル名リネーム
-  7. ```npm i -D gulp-watch```//Sassファイル更新監視
-  8. ```npm i -D gulp-plumber```//コンパイルエラー検知
-  9. ```npm i -D gulp-notify```//デスクトップ通知
+    1. ```npm i -D gulp```//gulp本体
+    2. ```npm i -D gulp-cssmin```//CSS圧縮
+    3. ```npm i -D gulp-uglify```//javascript圧縮
+    4. ```npm i -D gulp-imagemin```//画像圧縮
+    5. ```npm i -D gulp-sass node-sass```//Sassコンパイル
+    6. ```npm i -D gulp-rename```//ファイル名リネーム
+    7. ```npm i -D gulp-watch```//Sassファイル更新監視
+    8. ```npm i -D gulp-plumber```//コンパイルエラー検知
+    9. ```npm i -D gulp-notify```//デスクトップ通知
 2. 作業フォルダー直下にgulpfile.jsを作成する。
-  1. **Gulp3系とGulp4系でgulpfile.jsの記述が異なっている。4系で進める。**
+    1. **Gulp3系とGulp4系でgulpfile.jsの記述が異なっている。4系で進める。**
 
 ### 5. タスクの実行
 
