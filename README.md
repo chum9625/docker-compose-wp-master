@@ -125,13 +125,20 @@ wp-sample
 2. Nodeインストール有無の確認。```node -v```
 3. テーマディレクトリに移動。```cd my-theme```
 4. npm初期化でpackage.jsonを作成する。```npm init -y```
-5. Gulpのインストール。```npm install -D gulp```
+5. Gulpをローカルにインストール。```npm install -D gulp```//-Dは--save-devの短縮形（ローカル指定）
 
 ### 4. タスクの作成（document整備中）
 
-1. SassをGulpでコンパイルするために必要なモジュールをローカルにインストールする。```npm install -D gulp gulp-sass```
-  1. Gulp本体のgulp
-  2. Sassファイルをコンパイルするためのプラグインgulp-sass
+1. 各タスクで使うGulpのプラグインをローカルにインストールする。
+  1. ```npm i -D gulp```//gulp本体
+  2. ```npm i -D gulp-cssmin```//CSS圧縮
+  3. ```npm i -D gulp-uglify```//javascript圧縮
+  4. ```npm i -D gulp-imagemin```//画像圧縮
+  5. ```npm i -D gulp-sass node-sass```//Sassコンパイル
+  6. ```npm i -D gulp-rename```//ファイル名リネーム
+  7. ```npm i -D gulp-watch```//Sassファイル更新監視
+  8. ```npm i -D gulp-plumber```//コンパイルエラー検知
+  9. ```npm i -D gulp-notify```//デスクトップ通知
 2. 作業フォルダー直下にgulpfile.jsを作成する。
   1. **Gulp3系とGulp4系でgulpfile.jsの記述が異なっている。4系で進める。**
 
