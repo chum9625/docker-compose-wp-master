@@ -23,7 +23,6 @@
 - [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
 - [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
 
-
 ## Docker Composeを使う理由
 
 - 環境構築の統一化が図れる。
