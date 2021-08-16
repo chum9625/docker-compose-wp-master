@@ -47,7 +47,7 @@
 
 ### 手順2. Dockerコンテナーの起動
 
-1. **コンテナー起動前の確認事項：[開発しやすくなる設定](#開発しやすくする設定)に目を通し、必要に応じて設定する。**
+1. **コンテナー起動前の確認事項：[設定補足](#設定補足)に目を通し、必要に応じて設定する。**
 2. 作業フォルダー（wp-sample）に移動し、コンテナーを起動する。（コマンド例は下記）
 
 ```bash
@@ -83,7 +83,7 @@ wp-sample
 - dockerで立ち上げたコンテナーにログインする ```docker exec -it [コンテナ名] /bin/bash```
 - ログインしたいコンテナー名やIDを確認する ```docker ps```
 
-## 開発しやすくする設定
+## 設定補足
 
 テーマ、プラグイン開発を効率よく行うための設定。
 
@@ -103,57 +103,7 @@ wp-sample
       - ./wp-content:/var/www/html/wp-content
 ```
 
-### 2. 開発用空テーマをダウンロードし、そのディレクトリをマウントする
-
-1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
-   1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
-2. *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
-3. ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
-4. ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
-
-```yml
- volumes:
-      - ./my-theme:/var/www/html/wp-content/themes/my-theme
-```
-
-### 3. タスクランナーの設定手順
-
-- 【注1】**前提：タスクランナーはテーマディレクトリ（ローカル=作業フォルダー）で動かす。**
-- 【注2】__*package.json*がない場合、*npm install*する前に*npm init*で*package.json*を作成する。__
-
-1. underscoresでSassを使うためにはnpm（Node.jsのパッケージ管理ツール）が必要。
-2. Nodeインストール有無の確認。```node -v```
-3. テーマディレクトリに移動。```cd my-theme```
-4. npm初期化でpackage.jsonを作成する。```npm init -y```
-5. Gulpをローカルにインストール。```npm install -D gulp```//-Dは--save-devの短縮形（ローカル指定）
-
-### 4. タスクの作成（document整備中）
-
-1. 各タスクで使うGulpのプラグインをローカルにインストールする。
-    1. ```npm i -D gulp```//gulp本体
-    2. ```npm i -D gulp-cssmin```//CSS圧縮
-    3. ```npm i -D gulp-uglify```//javascript圧縮
-    4. ```npm i -D gulp-imagemin```//画像圧縮
-    5. ```npm i -D gulp-sass node-sass```//Sassコンパイル
-    6. ```npm i -D gulp-rename```//ファイル名リネーム
-    7. ```npm i -D gulp-watch```//Sassファイル更新監視
-    8. ```npm i -D gulp-plumber```//コンパイルエラー検知
-    9. ```npm i -D gulp-notify```//デスクトップ通知
-2. 作業フォルダー直下にgulpfile.jsを作成する。
-    1. **Gulp3系とGulp4系でgulpfile.jsの記述が異なっている。4系で進める。**
-
-### 5. タスクの実行
-
-```npx gulp```
-
-### 6. テーマユニットテストデータ日本語版のインポート
-
-投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
-
-1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
-2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
-
-### 7. phpMyadminを使えるようにする
+### 2. phpMyadminを使う
 
 - データベース操作のGUIツール：phpMyAdminを使えるようにする。
 
@@ -168,6 +118,32 @@ phpmyadmin:
   ports:
     - "8080:80"
 ```
+
+### 3. 開発用空テーマを使う
+
+1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
+   1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
+2. *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
+3. ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
+4. ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
+
+```yml
+ volumes:
+      - ./my-theme:/var/www/html/wp-content/themes/my-theme
+```
+
+### 4. タスクランナーの導入
+
+- 別document参照。
+
+### 5. テーマユニットテストデータ日本語版のインポート
+
+投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
+
+1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
+2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
+
+
 
 ---
 
