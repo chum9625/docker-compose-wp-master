@@ -12,10 +12,11 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const sass = require('gulp-sass');
 
 // プラグインの処理をまとめる
-const cssSass = () => {
+const cssSass = (done) => {
     return src('src/css/**/*.scss') //コンパイル元
         .pipe(sass({ outputStyle: 'expanded' }))
         .pipe(dest('dist/css'))     //コンパイル先
+        done();
 }
 
 // タスクをまとめて実行
