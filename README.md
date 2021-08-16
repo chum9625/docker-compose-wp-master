@@ -68,8 +68,8 @@ docker-compose up -d
 wp-sample
 ├── html/
 ├── phpmyadmin/   # volumesを追記した場合
-├── wp-content/   #どちらか一方でもよい
-├── my-theme/    #どちらか一方でもよい
+├── wp-content/   #プラグイン操作するなら
+├── my-theme/
 └── docker-compose.yml
 ```
 
