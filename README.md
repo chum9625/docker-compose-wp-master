@@ -134,7 +134,7 @@ phpmyadmin:
 
 ### 4. タスクランナーの導入
 
-- 別document参照。
+- 別documentに記載。
 
 ### 5. テーマユニットテストデータ日本語版のインポート
 
@@ -142,8 +142,6 @@ phpmyadmin:
 
 1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
-
-
 
 ---
 
