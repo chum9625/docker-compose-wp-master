@@ -41,7 +41,7 @@
 
 - このリポジトリをCloneし、ディレクトリ名（例：wp-sample）を変更。
 
-### 手順2. Dockerコンテナーの起動
+### 手順2. Dockerコンテナの起動
 
 0. **初回コンテナ起動前に確認：[設定補足](#設定補足)に目を通し、必要に応じて設定する。**
 1. ターミナルで作業フォルダ（wp-sample）に移動。
@@ -57,7 +57,7 @@ docker-compose up -d
 
 ### 手順3. WordPressの設定
 
-1. Dockerコンテナー起動後、ブラウザで「localhost:8000」にアクセスする。
+1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
 2. WordPressのセットアップを実行する。
 
 ## ディレクトリ構成
@@ -75,16 +75,15 @@ wp-sample
 
 ## Docker主要コマンド
 
-|--コマンド--|--内容|
+|コマンド|内容|
+|---|---|
+|docker-compose up -d|コンテナ起動|
+|docker-compose down|起動した環境の停止・削除|
+|docker-compose down --volumes|停止・削除・データベース削除|
+|docker-compose ps|コンテナの状態を確認する|
 |docker-compose --version|Docker Composeのバージョンチェック|
-
--  ``````
-- Docker Composeでコンテナー起動 ```docker-compose up -d```
-- コンテナーの状態を確認する ```docker-compose ps```
-- 起動した環境の停止・削除 ```docker-compose down```
-- 停止・削除・データベース削除 ```docker-compose down --volumes```
-- dockerで立ち上げたコンテナーにログインする ```docker exec -it [コンテナ名] /bin/bash```
-- ログインしたいコンテナー名やIDを確認する ```docker ps```
+|docker ps|ログインしたいコンテナ名やIDを確認する|
+|dockerで立ち上げたコンテナにログインする|docker exec -it [コンテナ名] /bin/bash|
 
 ## 設定補足
 
