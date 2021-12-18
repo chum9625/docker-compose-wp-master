@@ -24,6 +24,7 @@
 
 - [【公式】クィックスタート: Compose と WordPress](https://docs.docker.jp/compose/wordpress.html)
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
+- [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
 
 ## 環境構築手順
 
@@ -118,7 +119,9 @@ phpmyadmin:
     - "8080:80"
 ```
 
-### 3. 開発用空テーマを使う
+## さらなる効率化のために有効な手法
+
+### 1. 開発用空テーマを使う
 
 1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
    1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
@@ -131,18 +134,17 @@ phpmyadmin:
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-### 4. タスクランナーの導入
+### 2. タスクランナーの導入
 
-- 別documentに記載。
-- - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
-- [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
+- 別documentでまとめる予定。
+- [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
 - [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
 - [絶対つまずかないGulp 4入門(2021年版)インストールとSassを使うまでの手順](https://ics.media/entry/3290/)
 - [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
 - [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
 
 
-### 5. テーマユニットテストデータ日本語版のインポート
+### 3. テーマユニットテストデータ日本語版のインポート
 
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
 
@@ -153,7 +155,7 @@ phpmyadmin:
 
 ## エラーの記録
 
-実行時に起きたエラーについて記録する。
+実行時に起きたエラーの記録。
 
 ### 【Linux特有】volumeマウント時のファイルowner問題
 
