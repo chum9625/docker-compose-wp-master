@@ -161,7 +161,7 @@ phpmyadmin:
 ---
 
 
-## エラlog
+## エラーlog
 
 docker-composeでWordPress開発環境を構築する時に遭遇したエラーの記録。
 
