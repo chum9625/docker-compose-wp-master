@@ -1,7 +1,7 @@
 # docker-compose-wordpress
 
 - docker-composeでWordPress開発環境を構築する手順書。
-- 新規テーマ開発のための環境構築について記述しています。
+- 新規テーマ開発のための環境構築について記述します。
 - 復元とは切り分ける。
   - [復元時の補足はこちら](wp-restore.md)
 
@@ -15,7 +15,7 @@
 
 ## Reference source
 
-- [Quickstart: Compose and WordPress](https://docs.docker.com/compose/wordpress/)
+- [Quickstart: Compose and WordPress](https://docs.docker.jp/compose/wordpress.html)
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
 - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
 - [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
