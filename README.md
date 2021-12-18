@@ -1,9 +1,15 @@
 # docker-compose-wordpress
 
 - docker-composeでWordPress開発環境を構築する手順書。
-- 新規テーマ開発のための環境構築について記述します。
 - 復元とは切り分ける。
   - [復元時の補足はこちら](wp-restore.md)
+
+## Docker Composeを使う理由
+
+- 環境構築の統一化を図るため。
+  - 複数のコンテナを組み合わせてWordPress環境を作る　＝　Webサーバー　＋　PHP　＋　データベース
+  - コマンドで実行可能。
+- 応用の効く開発環境構築の習得目的。
 
 ## 実行環境
 
@@ -17,18 +23,6 @@
 
 - [【公式】クィックスタート: Compose と WordPress](https://docs.docker.jp/compose/wordpress.html)
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
-- [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
-- [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
-- [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
-- [絶対つまずかないGulp 4入門(2021年版)インストールとSassを使うまでの手順](https://ics.media/entry/3290/)
-- [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
-- [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
-
-## Docker Composeを使う理由
-
-- 環境構築の統一化が図れる。
-- Docker Composeは複数のコンテナーを起動するツールであり、シンプルなコマンドで実行可能。
-- WordPressを動作させるための、Webサーバー、PHP、データベースをまとめて起動できる。
 
 ## 環境構築手順
 
@@ -47,8 +41,8 @@
 
 ### 手順2. Dockerコンテナーの起動
 
-1. **コンテナー起動前の確認事項：[設定補足](#設定補足)に目を通し、必要に応じて設定する。**
-2. 作業フォルダー（wp-sample）に移動し、コンテナーを起動する。（コマンド例は下記）
+1. **コンテナ起動前の確認事項：[設定補足](#設定補足)に目を通し、必要に応じて設定する。**
+2. 作業フォルダ（wp-sample）に移動し、コンテナを起動する。（コマンド例は下記）
 
 ```bash
 cd wp-sample
@@ -135,6 +129,13 @@ phpmyadmin:
 ### 4. タスクランナーの導入
 
 - 別documentに記載。
+- - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
+- [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
+- [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
+- [絶対つまずかないGulp 4入門(2021年版)インストールとSassを使うまでの手順](https://ics.media/entry/3290/)
+- [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
+- [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
+
 
 ### 5. テーマユニットテストデータ日本語版のインポート
 
