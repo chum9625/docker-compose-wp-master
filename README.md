@@ -15,7 +15,7 @@
 
 ## Reference source
 
-- [Quickstart: Compose and WordPress](https://docs.docker.jp/compose/wordpress.html)
+- [【公式】クィックスタート: Compose と WordPress](https://docs.docker.jp/compose/wordpress.html)
 - [コマンドラインリファレンス](https://docs.docker.jp/compose/reference/toc.html)
 - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
 - [Docker Composeを使ってWordPressが動作するローカル環境を作る](https://codeaid.jp/blog/docker-wp/)
