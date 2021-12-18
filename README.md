@@ -75,7 +75,10 @@ wp-sample
 
 ## Docker主要コマンド
 
-- Docker Composeのバージョンチェック ```docker-compose --version```
+|--コマンド--|--内容|
+|docker-compose --version|Docker Composeのバージョンチェック|
+
+-  ``````
 - Docker Composeでコンテナー起動 ```docker-compose up -d```
 - コンテナーの状態を確認する ```docker-compose ps```
 - 起動した環境の停止・削除 ```docker-compose down```
@@ -119,6 +122,10 @@ phpmyadmin:
     - "8080:80"
 ```
 
+
+---
+
+
 ## さらなる効率化のために有効な手法
 
 ### 1. 開発用空テーマを使う
@@ -151,11 +158,13 @@ phpmyadmin:
 1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
 
+
 ---
 
-## エラーの記録
 
-実行時に起きたエラーの記録。
+## エラlog
+
+docker-composeでWordPress開発環境を構築する時に遭遇したエラーの記録。
 
 ### 【Linux特有】volumeマウント時のファイルowner問題
 
