@@ -7,11 +7,11 @@
 
 ## 実行環境
 
+- macOS Monterey
 - Ubuntu-20.04
   - windows user
   - linux user（owner問題あり）
 - Windows 10
-- Mac OS Big Sur
 
 ## Reference source
 
