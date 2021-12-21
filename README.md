@@ -82,7 +82,7 @@ wp-sample
 |docker-compose ps|コンテナの状態を確認する|
 |docker-compose --version|Docker Composeのバージョンチェック|
 |docker ps|ログインしたいコンテナ名やIDを確認する|
-|dockerで立ち上げたコンテナにログインする|docker exec -it [コンテナ名] /bin/bash|
+|docker exec -it [コンテナ名] /bin/bash|dockerで立ち上げたコンテナにログインする|
 
 ## 推奨設定
 
