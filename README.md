@@ -93,9 +93,9 @@ wp-sample
 1. テーマやプラグインを直接扱えるように、作業フォルダー内にサブフォルダーを作る。
 2. volumesオプションで定義する。（データが保持される）
 3. マウント例：扱いやすいよう次のいずれかを設定すると良い
-   - サブフォルダーhtml：WordPressファイル群すべて
-   - サブフォルダーwp-content：wp-contentディレクトリのみ
-   - サブフォルダーcocoon-child-master：子テーマディレクトリのみ
+   - html：WordPressファイル群すべて
+   - wp-content：wp-contentディレクトリのみ
+   - cocoon-child-master：子テーマディレクトリのみ
 
 ```yml
   wordpress:
