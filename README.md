@@ -14,10 +14,10 @@
 ## 実行環境
 
 - macOS Monterey
-- Ubuntu-20.04
+- Windows 10
+- Ubuntu-20.04（使わないことにした）
   - windows user
   - linux user（owner問題あり）
-- Windows 10
 
 ## Reference source
 
