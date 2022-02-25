@@ -7,7 +7,7 @@
 ## Docker Composeを使う理由
 
 - 環境構築の統一化を図るため。
-  - 複数のコンテナを組み合わせてWordPress環境を作る　＝　Webサーバー　＋　PHP　＋　データベース
+  - 複数のコンテナ（Webサーバー＋PHP＋データベース）を組み合わせてWordPress環境を作る。　
   - 高速で環境が整う。数秒でWordPressインストール画面が立ち上がる。
 - 応用の効く開発環境構築の習得目的。
 
@@ -15,9 +15,7 @@
 
 - macOS Monterey
 - Windows 10
-- Ubuntu-20.04（使わないことにした）
-  - windows user
-  - linux user（owner問題あり）
+- ~~Ubuntu-20.04~~（使わないことにした）
 
 ## Reference source
 
