@@ -53,6 +53,10 @@ cd wp-sample
 docker-compose up -d
 ```
 
+- 実行中、directoryをShareするか質問されるので許可する。
+- 拒否するとエラーになる：Error response from daemon: user declined directory sharing
+- [ボリューム共有が有効にならない。 Docker CE for Windows の設定でのボリューム共有の有効化 (Linux コンテナーのみ)](https://docs.microsoft.com/ja-jp/visualstudio/containers/troubleshooting-docker-errors?view=vs-2022#volume-sharing-is-not-enabled-enable-volume-sharing-in-the-docker-ce-for-windows-settings--linux-containers-only)
+
 ### 手順3. WordPressの設定
 
 1. Dockerコンテナ起動後、ブラウザで「localhost:8000」にアクセスする。
