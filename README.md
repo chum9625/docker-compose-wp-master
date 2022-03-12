@@ -127,10 +127,18 @@ phpmyadmin:
 
 ---
 
+## さらなる効率化のためのメモ
 
-## さらなる効率化のために有効な手法
+### 1. SSHでWordPressインストール
 
-### 1. 開発用空テーマを使う
+1. 本番サーバーにSSHで接続する。
+2. インストールするディレクトリに移動。``` cd /web/public_html/hoge ```
+3. WordPress最新版をダウンロード。 ``` wget http://ja.wordpress.org/latest-ja.tar.gz ```
+4. 解凍。（/wordpress/に解凍される） ``` tar -zxvf latest-ja.tar.gz ```
+5. 配置したい1つ上のディレクトリにファイルを移動する。``` mv ./wordpress/* ./ ```
+6. 不要なディレクトリ、ファイルを削除。 ``` rm -r latest-ja.tar.gz wordpress ```
+
+### 2. 開発用空テーマを使う
 
 1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
    1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
@@ -143,7 +151,7 @@ phpmyadmin:
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-### 2. タスクランナーの導入
+### 3. タスクランナーの導入
 
 - 別documentでまとめる予定。
 - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
@@ -153,12 +161,14 @@ phpmyadmin:
 - [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
 
 
-### 3. テーマユニットテストデータ日本語版のインポート
+### 4. テーマユニットテストデータ日本語版のインポート
 
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
 
 1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
+
+- プラグイン Yoast Duplicate Post で対応する手もある。
 
 
 ---
