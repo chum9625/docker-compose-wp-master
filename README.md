@@ -31,9 +31,9 @@
 ### 手順0. 準備
 
 1. [Docker Desktop](https://www.docker.com/products/docker-desktop)をインストール。（Docker Composeは同梱されている）
-2. __※only WSL※__ Docker Desktopの設定をする。
-   1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04をONにする。
-   2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。
+2. ~~__※only WSL※__ Docker Desktopの設定をする。~~
+   ~~1. docker-desktop > settings > Resources > WSL INTEGRATION > Ubuntu-20.04をONにする。~~
+   ~~2. VScode > ターミナル > Ubuntu-20.04(WSL) を選択する。~~
 
 ### 手順1. リポジトリをCloneする
 
