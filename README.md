@@ -15,7 +15,7 @@
 
 - macOS Monterey
 - Windows 10
-- ~~Ubuntu-20.04~~（使わないことにした）
+- ~~Ubuntu-20.04~~（ここでは扱わず別項目としてまとめる）
 
 ## Reference source
 
@@ -193,6 +193,11 @@ docker-composeでWordPress開発環境を構築する時に遭遇したエラー
 #### 解決策
 
 - 解決策が同じだった人を見つけた：[DockerでWSL2を使うと上手くいかなかった話](https://laraweb.net/environment/9462/)
+- __権限を与えればよい__
+
+```
+chmod 707 /対象ディレクトリ
+```
 
 ---
 
