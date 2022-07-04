@@ -127,7 +127,7 @@ phpmyadmin:
 
 ---
 
-## 付録1. SSHでWordPressのインストール手順
+### 付録1. SSHでWordPressのインストール手順
 
 1. 本番サーバーにSSHで接続する。
 2. インストールするディレクトリに移動。 ``` cd /web/public_html/hoge ```
@@ -136,7 +136,7 @@ phpmyadmin:
 5. 配置したいディレクトリにファイルを移動する。 例） ``` mv ./wordpress/* ./ ```
 6. 不要なディレクトリ、ファイルを削除。 例） ``` rm -r latest-ja.tar.gz wordpress ```
 
-## 付録2. 開発用空テーマ　_s を使う
+### 付録2. 開発用空テーマ　_s を使う
 
 1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
    1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
@@ -149,7 +149,7 @@ phpmyadmin:
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-##　付録3. タスクランナーの導入（別documentでまとめる予定）
+### 付録3. タスクランナーの導入（別documentでまとめる予定）
 
 - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
 - [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
@@ -157,14 +157,14 @@ phpmyadmin:
 - [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
 - [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
 
-## 付録4. テーマユニットテストデータ日本語版のインポート
+### 付録4. テーマユニットテストデータ日本語版のインポート
 
 投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。[詳細](https://wpdocs.osdn.jp/%E3%83%86%E3%83%BC%E3%83%9E%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88%E3%83%86%E3%82%B9%E3%83%88)
 
 1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
 
-- プラグイン Yoast Duplicate Post で対応する方法もある。
+  - プラグイン Yoast Duplicate Post で対応する方法もある。
 
 ---
 
