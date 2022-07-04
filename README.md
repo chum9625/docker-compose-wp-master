@@ -1,4 +1,4 @@
-# docker-compose-wordpress
+# 概要
 
 - docker-composeでWordPress開発環境を構築する手順書。
 - 復元とは切り分ける。
@@ -15,7 +15,7 @@
 
 - macOS Monterey
 - Windows 10
-- ~~Ubuntu-20.04~~（ここでは扱わず別項目としてまとめる）
+- ~~Ubuntu-20.04~~（権限問題があるので扱わない）
 
 ## Reference source
 
@@ -127,49 +127,44 @@ phpmyadmin:
 
 ---
 
-## さらなる効率化のためのメモ
-
-### 1. SSHでWordPressインストール
+## 付録1. SSHでWordPressのインストール手順
 
 1. 本番サーバーにSSHで接続する。
-2. インストールするディレクトリに移動。``` cd /web/public_html/hoge ```
-3. WordPress最新版をダウンロード。 ``` wget http://ja.wordpress.org/latest-ja.tar.gz ```
-4. 解凍。（/wordpress/に解凍される） ``` tar -zxvf latest-ja.tar.gz ```
-5. 配置したい1つ上のディレクトリにファイルを移動する。``` mv ./wordpress/* ./ ```
-6. 不要なディレクトリ、ファイルを削除。 ``` rm -r latest-ja.tar.gz wordpress ```
+2. インストールするディレクトリに移動。 ``` cd /web/public_html/hoge ```
+3. WordPress最新版をダウンロード。  ``` wget http://ja.wordpress.org/latest-ja.tar.gz ```
+4. 解凍。（/wordpress/に解凍される）  ``` tar -zxvf latest-ja.tar.gz ```
+5. 配置したいディレクトリにファイルを移動する。 例） ``` mv ./wordpress/* ./ ```
+6. 不要なディレクトリ、ファイルを削除。 例） ``` rm -r latest-ja.tar.gz wordpress ```
 
-### 2. 開発用空テーマを使う
+## 付録2. 開発用空テーマ　_s を使う
 
 1. [underscores.me](https://underscores.me/) で、空テーマを取得する。
    1. sassを使う場合、Advanced Optionsをクリックし、sassify!にチェックを入れる。
-2. *my-theme*という名前のテーマを作成したい場合、*my-theme*と入力してGENERATEボタンをクリック（ダウンロード）する。
+2. __my-theme__ という名前のテーマを作成したい場合、 __my-theme__ と入力してGENERATEボタンをクリック（ダウンロード）する。
 3. ダウンロードしたものを作業フォルダー（wp-sample）に配置する。
-4. ymlファイルのwordpressサービスに追記、*my-theme*を*volumes*で*wp-contente/themes*にマウントする。
+4. ymlファイルのwordpressサービスに追記、 __my-theme__ を __volumes__ で __wp-contente/themes__ にマウントする。
 
 ```yml
  volumes:
       - ./my-theme:/var/www/html/wp-content/themes/my-theme
 ```
 
-### 3. タスクランナーの導入
+##　付録3. タスクランナーの導入（別documentでまとめる予定）
 
-- 別documentでまとめる予定。
 - [Gulp公式：Quick Start](https://gulpjs.com/docs/en/getting-started/quick-start)
 - [いまさら始めるGulpでWordPressテーマ開発](https://olein-design.com/blog/gulp-wp-starter)
 - [絶対つまずかないGulp 4入門(2021年版)インストールとSassを使うまでの手順](https://ics.media/entry/3290/)
 - [Gulp ＋ Browsersyncを使ったブラウザ自動リロードでコーディング効率化を目指す](https://designsupply-web.com/media/knowledgeside/3785/)
 - [忘備録](https://sotoogre.hatenablog.jp/entry/2020/10/25/121040)
 
+## 付録4. テーマユニットテストデータ日本語版のインポート
 
-### 4. テーマユニットテストデータ日本語版のインポート
+投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。[詳細](https://wpdocs.osdn.jp/%E3%83%86%E3%83%BC%E3%83%9E%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88%E3%83%86%E3%82%B9%E3%83%88)
 
-投稿、固定ページ、コメント、メニュー等のダミーデータをインポートする。
-
-1. Forkした[テーマユニットテストデータ日本語版](https://github.com/chum9625/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
+1. [テーマユニットテストデータ日本語版](https://github.com/jawordpressorg/theme-test-data-ja)からwordpress-theme-test-data-ja.xmlを取得。
 2. 管理画面のツール→インポートの「WordPress」からインポートを実行する。
 
-- プラグイン Yoast Duplicate Post で対応する手もある。
-
+- プラグイン Yoast Duplicate Post で対応する方法もある。
 
 ---
 
