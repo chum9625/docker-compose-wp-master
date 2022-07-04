@@ -127,7 +127,7 @@ phpmyadmin:
 
 ---
 
-### 付録1. SSHでWordPressのインストール手順
+### 付録1. SSHでサーバーにWordPressをインストールする
 
 1. 本番サーバーにSSHで接続する。
 2. インストールするディレクトリに移動。 ``` cd /web/public_html/hoge ```
